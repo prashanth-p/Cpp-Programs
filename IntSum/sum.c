@@ -1,17 +1,19 @@
 #include<stdio.h>
 #include<limits.h>
 
-void Test(int N); //Performs 
+int Test(int N); //Performs 
 int main (void)
 {
-    int N;                          //Number Of test cases
+    int N,d;                          //Number Of test cases
     
     printf("Enter the number of test cases you want to perform:\n");
     scanf("%d",&N);
-    Test(N);
+    d = Test(N);
+    if(d==0)
+        printf("Test case Successful\n");
 }
 
-void Test(int N)
+int Test(int N)
 {
     while(N!=0)
     {
@@ -57,7 +59,7 @@ void Test(int N)
             N--;
             continue;
         }
-        else if(c == divide1)
+        else if((float)c == divide1)
         {
             printf("Possible\n");
             N--;
@@ -66,5 +68,9 @@ void Test(int N)
         else 
             printf("Imossible\n");
             N--;
+    }
+    if(N==0)
+    {
+        return 0;
     }
 }
