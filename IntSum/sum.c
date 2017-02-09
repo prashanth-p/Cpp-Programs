@@ -1,20 +1,44 @@
+/* 
+INPUT
+Each input file will start with a single integer N (1 ≤ N ≤ 10000) denoting the number of test cases. The
+following N lines will contain sets of 3 numbers a, b, c (1 ≤ a, b, c ≤ 10000).
+*/
+
+/*
+OUTPUT
+For each test case, determine whether or not it is possible to produce the third number, c, using the first two
+numbers, a and b, using addition, subtraction, multiplication, or division.
+*/
+
 #include<stdio.h>
 #include<limits.h>
 #include<stdlib.h>
+
 
 //This struct holds the test case values
 struct ThreeNum{
     int n1,n2,n3;
 };
+
+
+
+void ReadInt(void);                     //Read the values from the files and passes the input to the test function
 int Test(int N,struct ThreeNum num[]); //Performs The test cases
 
+
 int main (void){
-    
+    ReadInt();  //Read the value from the file
+}
+
+
+
+void ReadInt(void){
+     
     int i,N,d,s;
     //Number Of test cases
     s = sizeof(struct ThreeNum);
     printf("%d",s);
-    FILE *finptr;                   //Initialise the file location pointer
+    FILE *finptr;                   //Initialise the pointer to input file location ---Input.txt--------
     
     finptr = fopen("Input.txt","r"); //Open the file in read mode
     
@@ -24,10 +48,10 @@ int main (void){
         exit(0);
     }
     
-    fscanf(finptr,"%d", &N);
+    fscanf(finptr,"%d", &N);            //Scans the number of test cases to be performed
     printf("The value of N is %d\n",N);
 
-    struct ThreeNum num[N];
+    struct ThreeNum num[N];             //Number of test cases
     
     for(i=0;i<N;i++){
         fscanf(finptr,"\n%d %d %d",&num[i].n1, &num[i].n2, &num[i].n3);
@@ -35,26 +59,26 @@ int main (void){
     }
     
     fclose(finptr);    
-  
-    
-    d = Test(N,num);
+    d = Test(N,num);                //Call the test function to test each case
     if(d==0)
-        printf("Test case Successful\n");
+    printf("Test case Successful\n");
+      
 }
 
+//This function performs the test operation of each case
 int Test(int N,struct ThreeNum num[])
 {
     int i;
-    FILE *foutptr;
+    FILE *foutptr;                  //Points to the output file --Destination file --Output.txt
     foutptr = fopen("Output.txt","w");
     if(foutptr == NULL)
     {
         printf("Error\n");
         exit(1);
     }
-    for(i=0;i<N;i++)
+    for(i=0;i<N;i++)                //Finds the value of a,b,c for each test case
     {
-        int a,b,c;
+        int a,b,c;                  
         a = num[i].n1;
         b = num[i].n2;
         c = num[i].n3;
@@ -67,6 +91,7 @@ int Test(int N,struct ThreeNum num[])
         divide = (float)a/b;
         divide1 = (float)b/a;
         
+        //Test for all the six cases ------ add,mul,sub,div-----
         if(c == add){
             printf("Possible\n");
             fprintf(foutptr,"Possible\n");
