@@ -36,8 +36,6 @@ void ReadInt(void){
      
     int i,N,d,s;
     //Number Of test cases
-    s = sizeof(struct ThreeNum);
-    printf("%d",s);
     FILE *finptr;                   //Initialise the pointer to input file location ---Input.txt--------
     
     finptr = fopen("Input.txt","r"); //Open the file in read mode
@@ -55,7 +53,7 @@ void ReadInt(void){
     
     for(i=0;i<N;i++){
         fscanf(finptr,"\n%d %d %d",&num[i].n1, &num[i].n2, &num[i].n3);
-        printf("The value of a,b,c is %d %d %d\n",num[i].n1,num[i].n2,num[i].n3);
+        printf("The value of test(%d):a,b,c is %d %d %d\n",i,num[i].n1,num[i].n2,num[i].n3);
     }
     
     fclose(finptr);    
