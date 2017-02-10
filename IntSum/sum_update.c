@@ -40,12 +40,6 @@ int main (void){
     t=TestCases(test);                      //tests all cases
     if(!t)
         printf("Test case Successful\n");   
-  /*      
-    p = PrintRes(res);                         //Saves the result and prints it in the file    
-    if(!p)
-        printf("Print the file succesful")
-    return 0;   
-*/
 }
 
 
