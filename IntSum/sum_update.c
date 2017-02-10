@@ -49,41 +49,30 @@ int main (void){
 }
 
 
-
+//Function Reads the value from the input file
 int ReadInt(struct ProblemSet *test){
      
-    //struct ProblemSet *test = malloc(sizeof(struct ProblemSet));    
-    //struct ProblemSet test;
     int i;
-    //Number Of test cases
     FILE *finptr;                       //Initialise the pointer to input file location ---Input.txt--------
     
     
     finptr = fopen("Input.txt","r");    //Open the file in read mode
-    
-    if(finptr == NULL)
-    {
+    if(finptr == NULL){
         printf("Error first file open\n");
         exit(0);
     }
-    
-    
-    
     fscanf(finptr,"%d", &(test->n));                           //Scans the number of test cases to be performed
-    
-    
     printf("in Read\n"); 
     printf("The value of N is %d\n",test->n);
     test->ps = malloc(test->n*sizeof(struct problem));   
-   for(i=0;i<test->n;i++){
+    for(i=0;i<test->n;i++){
                         fscanf(finptr,"\n%d %d %d",&(test->ps[i].p),&(test->ps[i].q),&(test->ps[i].r));
                         printf("The value of a,b,c is %d %d %d\n",(test->ps[i].p),(test->ps[i].q),(test->ps[i].r));
-   }
-    
+    }
     fclose(finptr);
     return 0;
-
 }
+
 
 //This function performs the test operation of each case
 int TestCases(struct ProblemSet *test)
@@ -148,8 +137,7 @@ int TestCases(struct ProblemSet *test)
         }
     }
     fclose(foutptr);
-    if(test->n)
-    {
+    if(test->n){
         return 0;
     }
 }
