@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "complex.h"
 
-int main()
+int main(void)
 {
         struct complex c1,c2,c3;
         int a = 5,b=8,c;
@@ -14,4 +14,5 @@ int main()
         c3 = complex_add(c1,c2);
         printf("the sum of c1 and c2 = %f + i%f",c3.real,c3.imag);
         printf(" c = %d",c);
+	return 0;
 }
